@@ -1,0 +1,58 @@
+version: 2
+
+project_name: {{PROJECT_NAME}}
+
+before:
+  hooks:
+    - go mod tidy
+    - go test ./...
+
+builds:
+  - main: ./cmd/{{PROJECT_NAME}}
+    binary: {{PROJECT_NAME}}
+    env:
+      - CGO_ENABLED=0
+    ldflags:
+      - -s -w
+      - -X {{MODULE_PATH}}/internal/cli.Version={{.Version}}
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm64
+
+archives:
+  - format: tar.gz
+    name_template: "{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}"
+    format_overrides:
+      - goos: windows
+        format: zip
+
+checksum:
+  name_template: "checksums.txt"
+
+changelog:
+  use: github-native
+
+brews:
+  - repository:
+      owner: {{GITHUB_OWNER}}
+      name: homebrew-cli
+      token: "{{ .Env.HOMEBREW_TAP_TOKEN }}"
+    homepage: "https://github.com/{{GITHUB_OWNER}}/{{GITHUB_REPO}}"
+    description: "{{DESCRIPTION_EN}}"
+    license: "MIT"
+    install: |
+      bin.install "{{PROJECT_NAME}}"
+    test: |
+      assert_match "{{PROJECT_NAME}} version", shell_output("#{bin}/{{PROJECT_NAME}} --version")
+
+release:
+  github:
+    owner: {{GITHUB_OWNER}}
+    name: {{GITHUB_REPO}}
+  draft: false
+  prerelease: auto
+  name_template: "v{{.Version}}"
