@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{PROJECT_NAME}}</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+
+  body {
+    background: #0d1117;
+    color: #c9d1d9;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+  }
+
+  a { color: #58a6ff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  code, pre {
+    font-family: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+    font-size: 0.875em;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* Header */
+  header {
+    border-bottom: 1px solid #30363d;
+    padding: 2rem 0 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  header h1 {
+    margin: 0 0 0.5rem;
+    font-size: 2rem;
+    color: #e6edf3;
+    letter-spacing: -0.5px;
+  }
+
+  header h1 span {
+    color: #58a6ff;
+  }
+
+  header p.description {
+    margin: 0;
+    color: #8b949e;
+    font-size: 1rem;
+  }
+
+  .lang-switch {
+    font-size: 0.875rem;
+    color: #8b949e;
+    white-space: nowrap;
+    padding-top: 0.25rem;
+  }
+
+  /* Demo */
+  .demo-section {
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+
+  .demo-section img {
+    max-width: 100%;
+    border-radius: 8px;
+    border: 1px solid #30363d;
+  }
+
+  /* Sections */
+  section {
+    margin-bottom: 3rem;
+  }
+
+  section h2 {
+    font-size: 1.25rem;
+    color: #e6edf3;
+    margin: 0 0 1.25rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #30363d;
+  }
+
+  /* Install blocks */
+  .install-block {
+    margin-bottom: 1.25rem;
+  }
+
+  .install-block h3 {
+    font-size: 0.875rem;
+    color: #8b949e;
+    margin: 0 0 0.5rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .code-block {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    padding: 0.875rem 1rem;
+    overflow-x: auto;
+    position: relative;
+  }
+
+  .code-block code {
+    color: #3fb950;
+    display: block;
+    white-space: pre;
+  }
+
+  /* Feature cards */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+
+  .card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 1.25rem;
+  }
+
+  .card .card-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .card h3 {
+    margin: 0 0 0.375rem;
+    font-size: 0.9375rem;
+    color: #e6edf3;
+  }
+
+  .card p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: #8b949e;
+    line-height: 1.5;
+  }
+
+  /* AI Skill section */
+  .skill-section .code-block code {
+    color: #58a6ff;
+  }
+
+  .skill-note {
+    margin-top: 0.75rem;
+    font-size: 0.875rem;
+    color: #8b949e;
+  }
+
+  /* Footer */
+  footer {
+    border-top: 1px solid #30363d;
+    padding: 2rem 0;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    font-size: 0.875rem;
+    color: #8b949e;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    color: #8b949e;
+  }
+
+  .footer-links a:hover {
+    color: #58a6ff;
+  }
+
+  @media (max-width: 600px) {
+    header h1 { font-size: 1.5rem; }
+    .cards { grid-template-columns: 1fr; }
+    footer { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <div class="header-inner">
+      <div>
+        <h1><span>{{PROJECT_NAME}}</span></h1>
+        <p class="description">{{DESCRIPTION}}</p>
+      </div>
+      <div class="lang-switch">
+        <a href="en.html">English</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="demo-section">
+    <img src="demo.gif" alt="demo">
+  </div>
+
+  <section>
+    <h2>설치</h2>
+
+    <div class="install-block">
+      <h3>Homebrew</h3>
+      <div class="code-block">
+        <code>brew install {{GITHUB_OWNER}}/cli/{{PROJECT_NAME}}</code>
+      </div>
+    </div>
+
+    <div class="install-block">
+      <h3>Go</h3>
+      <div class="code-block">
+        <code>go install {{MODULE_PATH}}/cmd/{{PROJECT_NAME}}@latest</code>
+      </div>
+    </div>
+
+    <div class="install-block">
+      <h3>Shell 스크립트</h3>
+      <div class="code-block">
+        <code>curl -fsSL https://{{GITHUB_OWNER}}.dev/{{GITHUB_REPO}}/install.sh | sh</code>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>주요 기능</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <h3>빠른 검색</h3>
+        <p>로컬 캐시를 활용해 빠른 결과를 제공합니다.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔌</div>
+        <h3>다양한 출력 형식</h3>
+        <p>table, json, jsonl, csv 형식으로 결과를 출력합니다.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🤖</div>
+        <h3>AI 연동</h3>
+        <p>tool-schema 명령으로 AI 에이전트에 바로 통합할 수 있습니다.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📦</div>
+        <h3>단일 바이너리</h3>
+        <p>외부 의존성 없이 단일 실행 파일로 동작합니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="skill-section">
+    <h2>AI 스킬 연동</h2>
+    <p>다음 명령으로 모든 명령어의 JSON Schema를 내보낼 수 있습니다.</p>
+    <div class="code-block">
+      <code>{{PROJECT_NAME}} tool-schema</code>
+    </div>
+    <p class="skill-note">Claude, GPT 등 AI 에이전트에 Tool로 등록하면 자연어로 {{PROJECT_NAME}}을 조작할 수 있습니다.</p>
+  </section>
+
+  <footer>
+    <div class="footer-links">
+      <a href="https://github.com/{{GITHUB_OWNER}}/{{GITHUB_REPO}}">GitHub</a>
+      <a href="https://github.com/sponsors/{{GITHUB_OWNER}}">Sponsor</a>
+    </div>
+    <div>MIT License</div>
+  </footer>
+
+</div>
+
+</body>
+</html>
