@@ -126,4 +126,7 @@ echo "  3. 테이블 컬럼 수정: internal/cli/root.go, internal/output/format
 echo "  4. i18n 메시지 수정: internal/i18n/messages.go"
 echo "  5. tool-schema 수정: internal/cli/tool_schema.go"
 echo "  6. GitHub Pages 수정: docs/ko.html, docs/en.html"
-echo "  7. 데모 GIF 생성: docs/demo.cast → docs/demo.gif"
+echo "  7. 데모 GIF 생성:"
+echo "     - docs/demo.cast 작성 (asciinema v2 형식)"
+echo "     - agg docs/demo.cast docs/demo.gif --font-size 16"
+echo "     - README.md에서 demo.gif 주석 해제"

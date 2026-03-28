@@ -4,6 +4,10 @@ kyungw00k Go CLI 프로젝트 템플릿.
 
 Cobra CLI, 멀티포맷 출력(table/json/jsonl/csv), i18n(ko/en), SQLite 캐시, 셀프 업데이트, AI tool-schema, GitHub Pages, 릴리스 파이프라인을 포함합니다.
 
+<!-- 초기화 후 아래 주석을 해제하고 데모 GIF를 추가하세요
+![demo](docs/demo.gif)
+-->
+
 ## 사용법
 
 ### 1. 템플릿에서 새 리포 생성
@@ -33,6 +37,7 @@ cd myproject
 | `internal/i18n/messages.go` | 메시지 추가/수정 |
 | `internal/cli/tool_schema.go` | AI Schema 수정 |
 | `docs/ko.html`, `docs/en.html` | GitHub Pages 내용 |
+| `docs/demo.cast` → `docs/demo.gif` | 터미널 데모 (아래 가이드 참고) |
 
 ### 4. GitHub 설정
 
@@ -68,6 +73,40 @@ internal/output/                 # 출력 포매터
 docs/                            # GitHub Pages + install.sh
 scripts/init.sh                  # 프로젝트 초기화 스크립트
 ```
+
+## 데모 GIF 만들기
+
+[asciinema](https://asciinema.org/) cast 파일을 작성하고 [agg](https://github.com/asciinema/agg)로 GIF 변환합니다.
+
+### 1. cast 파일 작성
+
+`docs/demo.cast` — asciinema v2 형식으로 직접 작성하거나 녹화:
+
+```json
+{"version": 2, "width": 100, "height": 30, "timestamp": 1711612800, "env": {"SHELL": "/bin/zsh", "TERM": "xterm-256color"}}
+[0.5, "o", "\u001b[1;36myourcli\u001b[0m — 프로젝트 설명\r\n"]
+[1.0, "o", "\r\n"]
+[1.5, "o", "\u001b[32m❯\u001b[0m yourcli search keyword\r\n"]
+[2.3, "o", "결과 출력...\r\n"]
+```
+
+- 녹화: `asciinema rec docs/demo.cast --cols 100 --rows 30`
+- 직접 작성: `[시간(초), "o", "출력 텍스트"]` 형식
+
+### 2. GIF 변환
+
+```bash
+# agg 설치: cargo install agg
+agg docs/demo.cast docs/demo.gif --font-size 16 --cols 100 --rows 30
+```
+
+### 3. README에 추가
+
+```markdown
+![demo](docs/demo.gif)
+```
+
+GitHub Pages의 `ko.html`/`en.html`에는 이미 `<img src="demo.gif">` placeholder가 포함되어 있습니다.
 
 ## 이 템플릿으로 만든 프로젝트
 

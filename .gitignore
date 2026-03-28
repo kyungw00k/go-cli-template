@@ -1,4 +1,6 @@
 build/
 *.exe
 .DS_Store
-.claude/
+.claude/state/
+.claude/memory/
+.claude/sessions/
